@@ -1,4 +1,4 @@
-# FM-Shibun
+# FM-Shimbun
 
 Family Martの新聞返品に必要になる納品バーコードを生成する。
 

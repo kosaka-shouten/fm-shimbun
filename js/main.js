@@ -19,7 +19,7 @@ var enc_barcode = function() {
   var cat  = form.cat.value;
   var bid  = form.bid.value;
 
-  var data12 = "04934" + String(day) + bid + cat;
+  var data12 = "04934" + String(day) + String(bid % 10000) + cat;
   var cd = calc_checkdigit(data12);
   var code = data12 + cd;
 
