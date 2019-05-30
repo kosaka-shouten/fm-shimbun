@@ -15,11 +15,19 @@ var calc_checkdigit = function(data) {
 var enc_barcode = function() {
   var form = document.forms.info;
   var date = new Date(form.date.value);
-  var day  = date.getDate() % 10;
   var cat  = form.cat.value;
   var bid  = form.bid.value;
 
-  var data12 = "04934" + String(day) + String(bid % 10000) + cat;
+  var calc_date00 = function(date) {
+    var t = new Date(date);
+    var n = Date.parse(t.getFullYear() + "/01/01");
+    var x = (t - n) / 1000 / 60 / 60 / 24;
+    x = Math.floor(x);
+
+    return ("0" + (x % 100 + 1)).slice(-2);
+  }
+
+  var data12 = "0493" + calc_date00(date) + String(bid % 10000) + cat;
   var cd = calc_checkdigit(data12);
   var code = data12 + cd;
 
